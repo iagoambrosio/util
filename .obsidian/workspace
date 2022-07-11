@@ -1,0 +1,94 @@
+{
+  "main": {
+    "id": "e68c454929243f79",
+    "type": "split",
+    "children": [
+      {
+        "id": "88c962666a9e7bf8",
+        "type": "leaf",
+        "state": {
+          "type": "empty",
+          "state": {}
+        }
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "91ad0095b99f248a",
+    "type": "split",
+    "children": [
+      {
+        "id": "6c973fba393facc5",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "52e458c7452bfd9f",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {}
+            }
+          },
+          {
+            "id": "c91c9dc852773b6a",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 317
+  },
+  "right": {
+    "id": "fdcf9698959d1b66",
+    "type": "split",
+    "children": [
+      {
+        "id": "7e0f9cd1ebe4bff6",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "bc54f1cf3b4bd2bb",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "active": "88c962666a9e7bf8",
+  "lastOpenFiles": [
+    "⛏chamados - admissão.md",
+    "documentação/Abacos Homologação.md",
+    "Sem título.md",
+    "documentação/Abacos - Lotes de despacho.md",
+    "clean.md",
+    "cs.sh.md"
+  ]
+}
