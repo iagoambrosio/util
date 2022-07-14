@@ -7,4 +7,8 @@ sudo useradd -G sudo -s /bin/bash -d /home/helpdesk -m helpdesk -p '$1$zcSV3347$
 ##para delimitar um hash de senha que o linux aceite
 openssl passwd -1 "<aqui vai a senha>"
 
+##Converte vhdx em qcow2 
+
+qemu-img convert -O qcow2 Bench-Dev.vhdx /var/lib/vz/images/112/vm-112-disk-1.qcow2
+
 ##

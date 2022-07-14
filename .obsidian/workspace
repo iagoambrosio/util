@@ -7,8 +7,12 @@
         "id": "88c962666a9e7bf8",
         "type": "leaf",
         "state": {
-          "type": "empty",
-          "state": {}
+          "type": "markdown",
+          "state": {
+            "file": "cs.sh.md",
+            "mode": "source",
+            "source": false
+          }
         }
       }
     ],
@@ -65,6 +69,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "cs.sh.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -84,11 +89,15 @@
   },
   "active": "88c962666a9e7bf8",
   "lastOpenFiles": [
-    "⛏chamados - admissão.md",
-    "documentação/Abacos Homologação.md",
-    "Sem título.md",
-    "documentação/Abacos - Lotes de despacho.md",
     "clean.md",
-    "cs.sh.md"
+    "cs.sh.md",
+    "documentacao/⛏chamados - admissão.md",
+    "documentacao/FOG - Vila Olimpia.md",
+    "documentacao/Abacos Homologação.md",
+    "documentacao/FOG - Vila Olimpia 1.md",
+    "fotos/Pasted image 20220712130752.png",
+    "Pasted image 20220712131210.png",
+    "Pasted image 20220712131218.png",
+    "Pasted image 20220712131233.png"
   ]
 }
