@@ -1,0 +1,25 @@
+version: "3"
+
+services:
+
+  ubuntu:
+    image: ubuntu
+    hostname: ubuntu
+    networks:
+      - ansible
+    entrypoint: ["cat","/dev/zero"]
+  debian:
+    image: debian
+    hostname: debian
+    networks:
+      - ansible
+    entrypoint: ["cat","/dev/zero"]
+  arch:
+    image: archlinux
+    hostname: arch
+    networks:
+      - ansible
+    entrypoint: ["cat","/dev/zero"]
+networks:
+  ansible:
+    driver: bridge

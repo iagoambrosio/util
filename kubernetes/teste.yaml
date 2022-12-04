@@ -1,0 +1,116 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: teste
+  name: teste
+  namespace: teste
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: teste
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: teste
+    spec:
+      containers:
+      - image: nginx
+        name: nginx
+        ports:
+        - containerPort: 80
+        resources: {}
+status: {}
+
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+    app: teste
+  name: teste
+spec:
+  ports:
+  - name: 8888-8888
+    port: 8888
+    protocol: TCP
+    targetPort: 8888
+  selector:
+    app: teste
+  type: ClusterIP
+status:
+  loadBalancer: {}
+
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+    app: teste
+  name: teste
+spec:
+  externalName: teste
+  selector:
+    app: teste
+  type: ExternalName
+status:
+  loadBalancer: {}
+
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+    app: teste
+  name: teste
+spec:
+  ports:
+  - name: 8885-8013
+    port: 8885
+    protocol: TCP
+    targetPort: 8013
+  selector:
+    app: teste
+  type: LoadBalancer
+status:
+  loadBalancer: {}
+
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+    app: teste
+  name: teste
+spec:
+  ports:
+  - name: 80-5674
+    port: 80
+    protocol: TCP
+    targetPort: 5674
+  selector:
+    app: teste
+  type: NodePort
+status:
+  loadBalancer: {}
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: teste
+  name: teste
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: teste
+  template:
+    metadata:
+      labels:
+        app: teste
+
