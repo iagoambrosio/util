@@ -17,9 +17,11 @@
     copy: 
       src: id_rsa.pub 
       dest: "/home/ansible/.ssh/{{ item }}" 
+      owner: ansible
+      group: ansible
       mode: 0600
     with_items:
-      - id_rsa.pub
+      - authorized_keys
   - name: Disable Password Authentication
     lineinfile:
            dest: /etc/ssh/sshd_config
@@ -33,6 +35,11 @@
            regexp: '^PermitRootLogin'
            line: "PermitRootLogin no"
            state: present
+           backup: yes
+  - name: Disable sudo password obrigatority
+    lineinfile:
+           dest: /etc/sudoers
+           line: "ansible ALL=(ALL) NOPASSWD: ALL"
            backup: yes
   - name: restart ssh
     service:
