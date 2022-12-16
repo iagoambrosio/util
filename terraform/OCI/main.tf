@@ -1,4 +1,4 @@
-#Criação de uma máquina AMPERE A1 com 24 Gb na região selecionada com um disco de 100 GB de boot
+#Criação de uma máquina AMPERE A1 Ubuntu com 24 Gb na região selecionada com um disco de 100 GB de boot
 provider "oci" {
 region = var.region
 tenancy_ocid = var.tenancy_ocid
