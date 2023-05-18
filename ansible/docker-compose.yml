@@ -7,19 +7,19 @@ services:
     hostname: ubuntu
     networks:
       - ansible
-    entrypoint: ["cat","/dev/zero"]
+    entrypoint: ["watch","./"]
   debian:
     image: debian
     hostname: debian
     networks:
       - ansible
-    entrypoint: ["cat","/dev/zero"]
+    entrypoint: ["watch","./"]
   arch:
     image: archlinux
     hostname: arch
     networks:
       - ansible
-    entrypoint: ["cat","/dev/zero"]
+    entrypoint: ["watch","./"]
 networks:
   ansible:
     driver: bridge
