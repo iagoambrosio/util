@@ -38,4 +38,4 @@ spec:
       securityContext: {}
       terminationGracePeriodSeconds: 30
       nodeSelector:
-        hostname: minikube-m02
+        kubernetes.io/hostname: minikube-m02
