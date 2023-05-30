@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    run: nginx
+    app: giropops
+  name: deployment-template
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      run: nginx
+  template:
+    metadata:
+      labels:
+        run: nginx
+        dc: UK
+    spec:
+      containers:
+      - image: nginx
+        imagePullPolicy: Always
+        name: nginx2
+        ports:
+        - containerPort: 80
+          protocol: TCP
+        resources:
+          limits:
+            cpu: 500m
+            memory: 510M
+          requests:
+            cpu: 50m
+            memory: 10Mi
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
