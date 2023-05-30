@@ -1,0 +1,12 @@
+#Para manutenção de nodes
+comandos:
+  - kubectl taint node <nome do node> key1=value1:NoSchedule #não agenda mais pods para rodar no nodeapiVersion: v1
+  - kubectl taint node <nome do node> key1=value1:NoExecute #remove os pods em execução de um node
+  - kubectl taint node <nome do node> key1=value1:<valor>- # remove tags de manutenção
+  - kubectl get events # retorna todos os eventos do cluster
+  - kubectl cluster-info
+  - kubectl config view # retorna o arquivo de configuração .kubeconfig do cluster
+  - kubectl run <nome do recurso> --image <nome_imagem> --dry-run=client -o yaml # executa o comando de criação de um deployment, mas não conclui
+conceitos:
+  Endpoints: interface entr o service e os pods
+  
