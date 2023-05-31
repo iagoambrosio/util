@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  labels:
+    app: daemonglobal
+  name: daemonglobal
+spec:
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app: daemonglobal
+  template:
+    metadata:
+      labels:
+        app: daemonglobal
+    spec:
+      containers:
+      - image: nginx:1.7.9
+        imagePullPolicy: IfNotPresent
+        name: nginx
+        ports:
+        - containerPort: 80
+          protocol: TCP
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+#Criação de uma estratégia para update e rollout dos pods do daemonSet
+  updateStrategy:
+    rollingUpdate:
+      maxUnavailable: 1
+    type: RollingUpdate
