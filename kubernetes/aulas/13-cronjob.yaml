@@ -1,0 +1,25 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  creationTimestamp: null
+  name: cronzinha
+spec:
+  jobTemplate:
+    metadata:
+      creationTimestamp: null
+      name: cronzinha
+    spec:
+      template:
+        metadata:
+          creationTimestamp: null
+        spec:
+          containers:
+          - image: busybox
+            name: cronzinha
+            args:
+            - /bin/sh
+            - -c
+            - date; echo "ola", sleep 30
+          restartPolicy: OnFailure
+  schedule: '*/1 * * * *' # minutos horas dia mes dia-da-semana
+status: {}
