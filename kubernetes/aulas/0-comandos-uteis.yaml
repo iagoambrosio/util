@@ -8,6 +8,10 @@ comandos:
   - kubectl config view # retorna o arquivo de configuração .kubeconfig do cluster
   - kubectl run <nome do recurso> --image <nome_imagem> --dry-run=client -o yaml # executa o comando de criação de um deployment, mas não conclui
   - kubectl label nodes <node_name> tipo=worker # Adiciona uma label no node
+  - kubectl scale --replicas=10 deployment <nome_deployment> # Redefine o numero de replicas
+modificaçoes_granulares:
+  - kubectl set <recurso> <objeto-kubernetes> <nome_obejto_kubernetes> <chave>:<valor> /k set image ds daemonsetname nginx=nginx:1.15.0
+  - kubectl edit <objeto_kubernetes> <nome_objeto_kubernetes>
 conceitos:
   Endpoints: interface entr o service e os pods
-  
+  DaemonSet: Garante que um serviço seja executado em todos os Nodes
