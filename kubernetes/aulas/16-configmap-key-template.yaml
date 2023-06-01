@@ -14,7 +14,7 @@ spec:
       - "3600"
     env:
     - name: frutas
-      valueFrom:
+      valueFrom: #pega o valor de uma configMap chamada cores-frutas com a Key: predileta
         configMapKeyRef:
           name: cores-frutas
           key: predileta

@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    label: clusterip
+  name: nginx-clusterip
+spec:
+  ports:
+  - name: service-clusterip
+    port: 80
+    protocol: TCP
+    targetPort: 80
+  selector:
+    label: deployment
+  type: ClusterIP
+status:
+  loadBalancer: {}
