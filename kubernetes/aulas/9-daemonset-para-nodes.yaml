@@ -1,5 +1,5 @@
 apiVersion: apps/v1
-kind: DaemonSet
+kind: DaemonSet # daemons que rodam no cluster inteiro, pelo menos uma réplica por nó
 metadata:
   labels:
     app: daemonglobal
