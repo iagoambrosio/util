@@ -11,6 +11,8 @@ comandos:
   - kubectl scale --replicas=10 deployment <nome_deployment> # Redefine o numero de replicas
   - kubectl create secret generic my-literal-secret --from-literal user=iago --from-literal password=102030 # cria um segredo com dois campos, com as strings repassadas
   - kubectl create secret generic my-secret --from-file=secret.txt # cria uma secret com base em um arquivo
+  - kubectl create configmap cores-frutas --from-literal uva=roxa --from-file predileta --from-file=frutas/ # cria configmap, não criptografado
+  - kubectl create clusterrolebinding toskeria --serviceaccount=default:<nome_usuario> --clusterrole=<role_pre_definida> # cria um bind em uma cluster role já atribuida no namespace default
 modificaçoes_granulares:
   - kubectl set <recurso> <objeto-kubernetes> <nome_obejto_kubernetes> <chave>:<valor> /k set image ds daemonsetname nginx=nginx:1.15.0
   - kubectl edit <objeto_kubernetes> <nome_objeto_kubernetes>

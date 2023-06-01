@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: null
+  labels:
+    run: pod-com-configmap
+  name: pod-com-configmap
+spec:
+  containers:
+  - image: busybox
+    name: pod-com-configmap
+    command:
+      - sleep
+      - "3600"
+    env:
+    - name: frutas
+      valueFrom:
+        configMapKeyRef:
+          name: cores-frutas
+          key: predileta
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+status: {}
