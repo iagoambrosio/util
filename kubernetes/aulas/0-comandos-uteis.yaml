@@ -13,6 +13,8 @@ comandos:
   - kubectl create secret generic my-secret --from-file=secret.txt # cria uma secret com base em um arquivo
   - kubectl create configmap cores-frutas --from-literal uva=roxa --from-file predileta --from-file=frutas/ # cria configmap, não criptografado
   - kubectl create clusterrolebinding toskeria --serviceaccount=default:<nome_usuario> --clusterrole=<role_pre_definida> # cria um bind em uma cluster role já atribuida no namespace default
+  - kubectl cp <arquivo> -n <namespace> <nome-do-pod>:/caminho # copia um arquivo para dentro do pod
+  - kubectl get pods -n processador -o name | grep preco | while read line ; do kubectl logs $line -n processador -p >> preco-depo-logs.txt ; done
 modificaçoes_granulares:
   - kubectl set <recurso> <objeto-kubernetes> <nome_obejto_kubernetes> <chave>:<valor> /k set image ds daemonsetname nginx=nginx:1.15.0
   - kubectl edit <objeto_kubernetes> <nome_objeto_kubernetes>
