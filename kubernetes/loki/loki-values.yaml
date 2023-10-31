@@ -41,18 +41,18 @@ fluent-bit:
   enabled: false
 
 grafana:
-  enabled: false
+  enabled: true
   sidecar:
     datasources:
       label: ""
       labelValue: ""
-      enabled: false
+      enabled: true
       maxLines: 1000
   image:
-    tag: 8.3.5
+    tag: 10.0.3
 
 prometheus:
-  enabled: false
+  enabled: true
   isDefault: false
   url: http://{{ include "prometheus.fullname" .}}:{{ .Values.prometheus.server.service.servicePort }}{{ .Values.prometheus.server.prefixURL }}
   datasource:
