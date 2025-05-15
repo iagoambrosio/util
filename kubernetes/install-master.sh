@@ -49,4 +49,4 @@ apt install kubelet kubeadm kubectl -y
 apt-mark hold kubelet kubeadm kubectl
 
 
-kubeadm init --control-plane-endpoint=k8s-master
+sudo kubeadm init --upload-certs --control-plane-endpoint=$(hostname --all-ip-addresses | cut -d ' ' -f 1 )  --cri-socket /run/containerd/containerd.sock --pod-network-cidr=10.32.0.0/16
