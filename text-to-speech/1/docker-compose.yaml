@@ -9,9 +9,5 @@ services:
 #      - ./.local:/root/.local
       - ./1-teste.txt:/app/1-teste.txt
       - ./2-teste.txt:/app/2-teste.txt
-    environment:
-      TTS_MODEL: "tts_models/multilingual/multi-dataset/xtts_v2"  # modelo válido em português
-      TTS_TEXT: "Olá, esta é uma síntese via docker-compose em portugues brasileiro!"
-      COQUI_TOS_AGREED: "1"
     command: >
-      sh -c "python synthesize.py synthesize 1-teste.txt"
+      sh -c "python synthesize.py 1-teste.txt"
