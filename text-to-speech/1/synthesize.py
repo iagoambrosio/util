@@ -4,7 +4,7 @@ import numpy as np
 import requests
 import re
 import sys
-
+import os
 def list_languages():
     # URL da página que contém a lista de vozes
     url = "https://huggingface.co/hexgrad/Kokoro-82M/blob/main/VOICES.md"
@@ -75,7 +75,13 @@ def main(arquivo, lang_code='pt-br', voice='pm_santa'):
     # Concatena todos os pedaços em um único array (se houver mais de um)
     if audio_chunks:
         audio_full = np.concatenate(audio_chunks)
-        output_file = f"output/{voice}.wav"
+        pasta = "output"
+        if not os.path.exists(pasta):
+            os.makedirs(pasta)
+            print(f"Pasta '{pasta}' criada com sucesso!")
+        else:
+            print(f"A pasta '{pasta}' já existe.")
+        output_file = f"{pasta}/{voice}.wav"
         sf.write(output_file, audio_full, 24000)  # Taxa de amostragem definida para 24000 Hz
         print(f"Áudio salvo em {output_file}")
     else:
