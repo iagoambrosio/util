@@ -5,7 +5,9 @@ WORKDIR /app
 
 RUN pip3 install torch==2.7.0 torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu
 # Atualiza o pip e instala as dependências necessárias: kokoro e soundfile
-RUN pip install kokoro soundfile
+RUN pip install kokoro soundfile pydub
+
+RUN apt update -y && apt install ffmpeg -y
 
 # Copia o script de inferência para dentro da imagem
 COPY synthesize.py /app/synthesize.py
