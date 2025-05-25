@@ -5,6 +5,15 @@ import requests
 import re
 import sys
 import os
+from pydub import AudioSegment
+
+def wav_para_mp3_vbr(input_wav, output_mp3, quality=9):
+    audio = AudioSegment.from_wav(input_wav)
+    audio.export(
+        output_mp3,
+        format="mp3",
+        parameters=["-q:a", str(quality)]
+    )
 def list_languages():
     # URL da página que contém a lista de vozes
     url = "https://huggingface.co/hexgrad/Kokoro-82M/blob/main/VOICES.md"
@@ -83,6 +92,7 @@ def main(arquivo, lang_code='pt-br', voice='pm_santa'):
             print(f"A pasta '{pasta}' já existe.")
         output_file = f"{pasta}/{voice}.wav"
         sf.write(output_file, audio_full, 24000)  # Taxa de amostragem definida para 24000 Hz
+        wav_para_mp3_vbr(f"{pasta}/{voice}.wav", f"{pasta}/{voice}.mp3")
         print(f"Áudio salvo em {output_file}")
     else:
         print(f"Não foi gerado áudio para a voz {voice}.")
