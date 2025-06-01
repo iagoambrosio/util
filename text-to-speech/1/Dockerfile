@@ -16,5 +16,7 @@ COPY setup.py /app/setup.py
 
 RUN python setup.py
 
+COPY  converte.py  /app/converte.py
+
 # Quando o container iniciar, executa o script de inferência
 CMD ["python", "synthesize.py"]
