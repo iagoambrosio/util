@@ -114,12 +114,16 @@ alloy:
         }
       }
 
+      local.file "hostname_file" {
+        filename  = "/etc/hostname"
+      }
+
       // descoberta de logs do syslog local
       local.file_match "node_logs" {
         path_targets = [{
           __path__   = "/var/log/syslog",
           job        = "node/syslog",
-          node_name  = sys.env("HOSTNAME"),
+          node_name  =  local.file.hostname_file.content,
           cluster    = "default",
         }]
       }
@@ -140,7 +144,7 @@ alloy:
 
         stage.labels {
           values = {
-            node = sys.env("HOSTNAME"),
+            node =  local.file.LABEL.content,
           }
         }
 
