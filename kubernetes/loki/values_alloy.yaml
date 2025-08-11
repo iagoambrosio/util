@@ -144,7 +144,7 @@ alloy:
 
         stage.labels {
           values = {
-            node =  local.file.LABEL.content,
+            node =  local.file.hostname_file.content,
           }
         }
 
