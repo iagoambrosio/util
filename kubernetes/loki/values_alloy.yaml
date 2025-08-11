@@ -124,11 +124,6 @@ alloy:
         forward_to = [loki.write.default.receiver]
       }
 
-      // coleta de logs do systemd via Journald
-      loki.source.journald "systemd" {
-        forward_to = [loki.process.node_systemd.receiver]
-      }
-
       // processamento dos logs do systemd, adiciona 'job' e 'node'
       loki.process "node_systemd" {
         stage.static_labels {
