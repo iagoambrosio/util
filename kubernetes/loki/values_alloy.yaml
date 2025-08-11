@@ -11,50 +11,55 @@ alloy:
       discovery.relabel "pod_logs" {
         targets = discovery.kubernetes.pod.targets
 
-        // mapear namespace, pod, container e app (regras originais)
         rule {
           source_labels = ["__meta_kubernetes_namespace"]
           action        = "replace"
           target_label  = "namespace"
-        }
+        },
+
         rule {
           source_labels = ["__meta_kubernetes_pod_name"]
           action        = "replace"
           target_label  = "pod"
-        }
+        },
+
         rule {
           source_labels = ["__meta_kubernetes_pod_container_name"]
           action        = "replace"
           target_label  = "container"
-        }
+        },
+
         rule {
           source_labels = ["__meta_kubernetes_pod_label_app_kubernetes_io_name"]
           action        = "replace"
           target_label  = "app"
-        }
+        },
+
         rule {
           source_labels = ["__meta_kubernetes_namespace", "__meta_kubernetes_pod_container_name"]
           action        = "replace"
           target_label  = "job"
           separator     = "/"
           replacement   = "$1"
-        }
+        },
+
         rule {
           source_labels = ["__meta_kubernetes_pod_uid", "__meta_kubernetes_pod_container_name"]
           action        = "replace"
           target_label  = "__path__"
           separator     = "/"
           replacement   = "/var/log/pods/*$1/*.log"
-        }
+        },
+
         rule {
           source_labels = ["__meta_kubernetes_pod_container_id"]
           action        = "replace"
           target_label  = "container_runtime"
           regex         = "^(\\S+):\\/\\/.+$"
           replacement   = "$1"
-        }
+        },
 
-        // nova regra: adiciona label 'node' com o nome do host do nó
+        // adiciona label 'node' com o nome do host do nó
         rule {
           source_labels = ["__meta_kubernetes_node_name"]
           action        = "replace"
@@ -72,9 +77,10 @@ alloy:
       loki.process "pod_logs" {
         stage.static_labels {
           values = {
-            cluster = "default"
+            cluster = "default",
           }
         }
+
         forward_to = [loki.write.default.receiver]
       }
 
@@ -88,14 +94,16 @@ alloy:
       // processamento de eventos do cluster
       loki.process "cluster_events" {
         forward_to = [loki.write.default.receiver]
+
         stage.static_labels {
           values = {
-            cluster = "default"
+            cluster = "default",
           }
         }
+
         stage.labels {
           values = {
-            kubernetes_cluster_events = "job"
+            kubernetes_cluster_events = "job",
           }
         }
       }
@@ -103,10 +111,10 @@ alloy:
       // descoberta de logs do syslog local
       local.file_match "node_logs" {
         path_targets = [{
-          __path__   = "/var/log/syslog"
-          job        = "node/syslog"
-          node_name  = sys.env("HOSTNAME")
-          cluster    = "default"
+          __path__   = "/var/log/syslog",
+          job        = "node/syslog",
+          node_name  = sys.env("HOSTNAME"),
+          cluster    = "default",
         }]
       }
 
@@ -125,14 +133,16 @@ alloy:
       loki.process "node_systemd" {
         stage.static_labels {
           values = {
-            job = "node/systemd"
+            job = "node/systemd",
           }
         }
+
         stage.labels {
           values = {
-            node = sys.env("HOSTNAME")
+            node = sys.env("HOSTNAME"),
           }
         }
+
         forward_to = [loki.write.default.receiver]
       }
 
@@ -141,9 +151,9 @@ alloy:
         endpoint {
           url     = "http://loki-gateway.loki.svc.cluster.local/loki/api/v1/push"
           headers = {
-            "X-Scope-OrgID" = "foo"
+            "X-Scope-OrgID" = "foo",
           }
         }
+
         external_labels = {}
       }
-      
