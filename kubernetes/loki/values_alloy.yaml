@@ -65,6 +65,12 @@ alloy:
           action        = "replace"
           target_label  = "node"
         }
+
+        rule {
+          source_labels = ["__meta_kubernetes_pod_container_image"]
+          action        = "replace"
+          target_label  = "container_image"
+        }
       }
 
       // leitura de logs de pods via API Kubernetes
