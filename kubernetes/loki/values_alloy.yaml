@@ -15,25 +15,25 @@ alloy:
           source_labels = ["__meta_kubernetes_namespace"]
           action        = "replace"
           target_label  = "namespace"
-        },
+        }
 
         rule {
           source_labels = ["__meta_kubernetes_pod_name"]
           action        = "replace"
           target_label  = "pod"
-        },
+        }
 
         rule {
           source_labels = ["__meta_kubernetes_pod_container_name"]
           action        = "replace"
           target_label  = "container"
-        },
+        }
 
         rule {
           source_labels = ["__meta_kubernetes_pod_label_app_kubernetes_io_name"]
           action        = "replace"
           target_label  = "app"
-        },
+        }
 
         rule {
           source_labels = ["__meta_kubernetes_namespace", "__meta_kubernetes_pod_container_name"]
@@ -41,7 +41,7 @@ alloy:
           target_label  = "job"
           separator     = "/"
           replacement   = "$1"
-        },
+        }
 
         rule {
           source_labels = ["__meta_kubernetes_pod_uid", "__meta_kubernetes_pod_container_name"]
@@ -49,7 +49,7 @@ alloy:
           target_label  = "__path__"
           separator     = "/"
           replacement   = "/var/log/pods/*$1/*.log"
-        },
+        }
 
         rule {
           source_labels = ["__meta_kubernetes_pod_container_id"]
@@ -57,7 +57,7 @@ alloy:
           target_label  = "container_runtime"
           regex         = "^(\\S+):\\/\\/.+$"
           replacement   = "$1"
-        },
+        }
 
         // adiciona label 'node' com o nome do host do nó
         rule {
