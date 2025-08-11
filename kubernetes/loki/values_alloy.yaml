@@ -158,7 +158,7 @@ alloy:
       }
       loki.write "default" {
         endpoint {
-          url     = "http://loki-gateway.default.svc.cluster.local/loki/api/v1/push"
+          url     = "http://loki-gateway.loki.svc.cluster.local/loki/api/v1/push"
           headers = {
             "X-Scope-OrgID" = "foo",
           }
