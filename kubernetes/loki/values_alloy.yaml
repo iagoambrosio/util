@@ -114,16 +114,12 @@ alloy:
         }
       }
 
-      local.file "hostname_file" {
-        filename  = "/etc/hostname"
-      }
-
       // descoberta de logs do syslog local
       local.file_match "node_logs" {
         path_targets = [{
           __path__   = "/var/log/syslog",
-          job        = "node/syslog",
-          node_name  =  local.file.hostname_file.content,
+          job        = "integrations/node/syslog",
+          node  =  sys.env("HOSTNAME"),
           cluster    = "default",
         }]
       }
@@ -138,13 +134,13 @@ alloy:
       loki.process "node_systemd" {
         stage.static_labels {
           values = {
-            job = "node/systemd",
+            job = "integration/node/systemd",
           }
         }
 
         stage.labels {
           values = {
-            node =  local.file.hostname_file.content,
+            node =  sys.env("HOSTNAME"),
           }
         }
 
