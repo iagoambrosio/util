@@ -162,3 +162,6 @@ alloy:
 
         external_labels = {}
       }
+  mounts:
+    # -- Mount /var/log from the host into the container for log collection.
+    varlog: true
