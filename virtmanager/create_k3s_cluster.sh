@@ -1,5 +1,5 @@
 #!/bin/bash
-
+sudo apt install virt-manager guestfish -y
 MASTER_NAME="k3s-master"
 AGENT_PREFIX="k3s-agent"
 NUM_AGENTS="$1"
@@ -80,7 +80,7 @@ ssh_pwauth: True
 packages:
   - curl
 runcmd:
-  - curl -sfL https://get.k3s.io | K3S_URL=https://${MASTER_IP}:6443 K3S_TOKEN=${TOKEN} sh -
+  - curl -sfL https://get.k3s.io | K3S_URL=https://${MASTER_IP}:6443 K3S_TOKEN=${TOKEN} K3S_NODE_NAME=${AGENT_NAME} sh -
 EOF
 
   virt-install \
