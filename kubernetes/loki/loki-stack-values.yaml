@@ -1,3 +1,4 @@
+# depreciado, utilize o values_loki.yaml
 test_pod:
   enabled: true
   image: bats/bats:1.8.2

@@ -1,0 +1,17 @@
+server:
+  service:
+    type: ClusterIP
+    port: 4040
+  storage:
+    path: /var/lib/pyroscope
+  database:
+    path: /var/lib/pyroscope/db
+persistence:
+  enabled: false
+resources:
+  requests:
+    memory: 256Mi
+    cpu: 100m
+  limits:
+    memory: 512Mi
+    cpu: 250m

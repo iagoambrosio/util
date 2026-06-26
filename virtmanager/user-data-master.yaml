@@ -1,0 +1,9 @@
+#cloud-config
+password: ubuntu
+chpasswd:
+  expire: False
+ssh_pwauth: True
+packages:
+  - curl
+runcmd:
+  - curl -sfL https://get.k3s.io | sh -

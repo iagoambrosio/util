@@ -1,0 +1,26 @@
+service:
+  type: ClusterIP
+  port: 3200
+ingester:
+  replicaCount: 1
+frontend:
+  replicaCount: 1
+queryFrontend:
+  replicaCount: 1
+compactor:
+  replicaCount: 1
+storage:
+  trace:
+    type: local
+    local:
+      directory: /tmp/tempo/traces
+      retention: 168h
+persistence:
+  enabled: false
+resources:
+  requests:
+    cpu: 100m
+    memory: 256Mi
+  limits:
+    cpu: 250m
+    memory: 512Mi

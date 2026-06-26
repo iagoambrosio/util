@@ -1,0 +1,19 @@
+alertmanager:
+  enabled: false
+server:
+  persistentVolume:
+    enabled: false
+  service:
+    type: ClusterIP
+    port: 9090
+  global:
+    scrape_interval: 15s
+    evaluation_interval: 15s
+  serviceMonitorSelector: {}
+  resources:
+    requests:
+      memory: 512Mi
+      cpu: 250m
+    limits:
+      memory: 1Gi
+      cpu: 500m

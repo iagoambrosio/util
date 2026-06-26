@@ -1,0 +1,38 @@
+adminUser: admin
+adminPassword: admin
+service:
+  type: ClusterIP
+  port: 3000
+persistence:
+  enabled: false
+resources:
+  requests:
+    cpu: 100m
+    memory: 128Mi
+  limits:
+    cpu: 250m
+    memory: 256Mi
+sidecar:
+  datasources:
+    enabled: true
+datasources:
+  datasources.yaml:
+    apiVersion: 1
+    datasources:
+      - name: Prometheus
+        type: prometheus
+        access: proxy
+        url: http://prometheus-server
+        isDefault: true
+      - name: Loki
+        type: loki
+        access: proxy
+        url: http://loki:3100
+      - name: Tempo
+        type: tempo
+        access: proxy
+        url: http://tempo:3200
+      - name: Pyroscope
+        type: pyroscope
+        access: proxy
+        url: http://pyroscope:4040
